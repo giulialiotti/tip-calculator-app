@@ -4,9 +4,9 @@ import React from "react";
 import { CardTitle, InputWrapper } from ".";
 
 // Assets
-import dollarIcon from "../assets/icon-dollar.svg";
+import personIcon from "../assets/icon-person.svg";
 
-export const Bill = () => {
+export const PeopleNumber = () => {
   const [amount, setAmount] = React.useState(0);
 
   const handleChange = (e) => {
@@ -15,11 +15,11 @@ export const Bill = () => {
 
   return (
     // Markup
-    <div className="card__bill">
-      <CardTitle className="card-title-dark">Bill</CardTitle>
+    <div className="card__people-number">
+      <CardTitle className="card-title-dark">Number of People</CardTitle>
       <InputWrapper
-        icon={dollarIcon}
-        alt="Dollar icon"
+        icon={personIcon}
+        alt="Person icon"
         amount={amount}
         handleChange={handleChange}
       />

@@ -94,13 +94,50 @@ p {
   color: var(--white);
 }
 
-.vector-and-number-wrapper {
+.input-wrapper {
   background-color: var(--neutral-500);
   border-radius: 6px;
   padding: 2% 4%;
   margin-top: 2%;
+
+  input {
+    color: var(--neutral-100);
+    flex-grow: 1;
+    font-size: 1.5rem;
+    font-family: "Space Mono", monospace;
+    text-align: right;
+    border: none;
+    background: transparent;
+    outline: none;
+  }
 }
 
-.card__bill__amout p {
-  color: var(--neutral-100);
+.button-primary {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--neutral-100);
+  color: var(--white);
+  font-size: 1.5rem;
+  font-family: "Space Mono", monospace;
+  padding: 2% 0;
+}
+
+.card__tip {
+  margin-top: 10%;
+
+  .card__tip__buttons-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    button {
+      margin-top: 4%;
+      width: 48%;
+    }
+  }
+}
+
+.card__people-number {
+  margin-top: 10%;
 }
