@@ -1,12 +1,17 @@
+// Context
+import { TotalProvider } from "./context/TotalContext";
+
 // Local Components
 import { Headline, Card } from "./components";
 
 function App() {
   return (
-    <main>
-      <Headline />
-      <Card />
-    </main>
+    <TotalProvider>
+      <main>
+        <Headline />
+        <Card />
+      </main>
+    </TotalProvider>
   );
 }
 
