@@ -1,5 +1,8 @@
 import React from "react";
 
+// Context
+import { TotalContext } from "../context/TotalContext";
+
 // Local Components
 import { CardTitle, InputWrapper } from ".";
 
@@ -7,10 +10,15 @@ import { CardTitle, InputWrapper } from ".";
 import dollarIcon from "../assets/icon-dollar.svg";
 
 export const Bill = () => {
-  const [amount, setAmount] = React.useState('');
+  const { amounts, setAmounts } = React.useContext(TotalContext);
 
+  // Store bill amount from input event
   const handleChange = (e) => {
-    setAmount((v) => (e.target.validity.valid ? e.target.value : v));
+    const value = e.target.validity.valid ? e.target.value : amounts.bill;
+
+    setAmounts((prevState) => {
+      return { ...prevState, bill: value };
+    });
   };
 
   return (
@@ -20,7 +28,7 @@ export const Bill = () => {
       <InputWrapper
         icon={dollarIcon}
         alt="Dollar icon"
-        amount={amount}
+        amount={amounts.bill}
         handleChange={handleChange}
         placeholder={0}
       />

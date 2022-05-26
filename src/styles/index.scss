@@ -130,6 +130,7 @@ p {
   font-size: 1.5rem;
   font-family: "Space Mono", monospace;
   padding: 2% 0;
+  transition: all 0.2s ease-out;
 }
 
 // Card: Selectors
@@ -217,4 +218,11 @@ p {
       }
     }
   }
+}
+
+// Active styles
+
+.button-primary.active {
+  background-color: var(--color-primary);
+  color: var(--neutral-100);
 }

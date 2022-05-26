@@ -1,16 +1,22 @@
 import React from "react";
 
+// Context
+import { TotalContext } from "../context/TotalContext";
+
 // Local Components
 import { CardTitle, ButtonPrimary } from ".";
 
 export const TotalCard = () => {
+  const { getTotalAmount, getTipAmount, resetAmounts } =
+    React.useContext(TotalContext);
+
   return (
     <div className="card__total-card">
       <div>
-        <ResultWrapper text="Tip Amount" total="0.00" />
-        <ResultWrapper text="Total" total="0.00" />
+        <ResultWrapper text="Tip Amount" total={getTipAmount()} />
+        <ResultWrapper text="Total" total={getTotalAmount()} />
       </div>
-      <ButtonPrimary>RESET</ButtonPrimary>
+      <ButtonPrimary handleClick={resetAmounts}>RESET</ButtonPrimary>
     </div>
   );
 };

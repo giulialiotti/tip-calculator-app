@@ -1,5 +1,9 @@
 import React from "react";
 
+// Context
+import { TotalContext } from "../context/TotalContext";
+
+// Local Components
 import { CardTitle, ButtonPrimary, InputWrapper } from ".";
 
 export const Tips = () => {
@@ -14,20 +18,36 @@ export const Tips = () => {
 };
 
 const ButtonsWrapper = ({ tips }) => {
-  const [amount, setAmount] = React.useState('');
+  const { amounts, setAmounts, customTip, setCustomTip } =
+    React.useContext(TotalContext);
 
+  // Set selected tip value
+  const setTipAmount = (value) =>
+    setAmounts((prevState) => {
+      return { ...prevState, tip: value };
+    });
+
+  // Store custom tip from input event
   const handleChange = (e) => {
-    setAmount((v) => (e.target.validity.valid ? e.target.value : v));
+    const value = e.target.validity.valid ? e.target.value : amounts.tip;
+    setCustomTip(e.target.value);
+    setTipAmount(value);
   };
 
   return (
     <div className="card__tip__buttons-wrapper">
       {tips.map((tip) => (
-        <ButtonPrimary key={tip}>{tip}%</ButtonPrimary>
+        <ButtonPrimary
+          key={tip}
+          className={amounts.tip === tip ? "active" : ""}
+          handleClick={() => setTipAmount(tip)}
+        >
+          {tip}%
+        </ButtonPrimary>
       ))}
       <InputWrapper
         className="tips__input-wrapper"
-        amount={amount}
+        amount={customTip === amounts.tip ? customTip : ""}
         handleChange={handleChange}
         placeholder="Custom"
       />

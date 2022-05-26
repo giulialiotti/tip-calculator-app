@@ -1,8 +1,8 @@
 import React from "react";
 
-export const ButtonPrimary = ({ children, handleClick }) => {
+export const ButtonPrimary = ({ children, className, handleClick }) => {
   return (
-    <button className="button-primary" onClick={handleClick}>
+    <button className={`button-primary ${className}`} onClick={handleClick}>
       {children}
     </button>
   );

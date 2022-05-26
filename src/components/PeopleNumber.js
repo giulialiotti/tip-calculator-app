@@ -1,5 +1,8 @@
 import React from "react";
 
+// Context
+import { TotalContext } from "../context/TotalContext";
+
 // Local Components
 import { CardTitle, InputWrapper } from ".";
 
@@ -7,10 +10,15 @@ import { CardTitle, InputWrapper } from ".";
 import personIcon from "../assets/icon-person.svg";
 
 export const PeopleNumber = () => {
-  const [amount, setAmount] = React.useState("");
+  const { amounts, setAmounts } = React.useContext(TotalContext);
 
+  // Store number of people from input event
   const handleChange = (e) => {
-    setAmount((v) => (e.target.validity.valid ? e.target.value : v));
+    const value = e.target.validity.valid ? e.target.value : amounts.people;
+
+    setAmounts((prevState) => {
+      return { ...prevState, people: value };
+    });
   };
 
   return (
@@ -20,7 +28,7 @@ export const PeopleNumber = () => {
       <InputWrapper
         icon={personIcon}
         alt="Person icon"
-        amount={amount}
+        amount={amounts.people}
         handleChange={handleChange}
         placeholder={0}
       />
