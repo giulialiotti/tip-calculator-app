@@ -6,3 +6,4 @@ export * from "./InputWrapper";
 export * from './PeopleNumber';
 export * from './ButtonPrimary';
 export * from './Tips';
+export * from './TotalCard'

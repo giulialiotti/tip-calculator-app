@@ -37,10 +37,15 @@ $desktop: 1400px;
 // Styles
 
 main {
+  align-content: stretch;
+  display: grid;
+  height: 100vh;
   padding-top: 15%;
 
   @media (min-width: $desktop) {
-    padding-top: 10%;
+    align-content: start;
+    height: auto;
+    padding: 10% 0;
   }
 }
 
@@ -76,13 +81,16 @@ p {
   background-color: var(--white);
   border-radius: 12px 12px 0 0;
   margin-top: 10%;
-  padding: 6%;
+  padding: 10% 8%;
   width: 100%;
 
   @media (min-width: $desktop) {
-    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 24px;
+    padding: 3%;
     margin: 5% auto 0;
-    width: 60%;
+    width: 70%;
   }
 }
 
@@ -109,6 +117,7 @@ p {
     border: none;
     background: transparent;
     outline: none;
+    width: 100%;
   }
 }
 
@@ -123,21 +132,89 @@ p {
   padding: 2% 0;
 }
 
-.card__tip {
-  margin-top: 10%;
+// Card: Selectors
 
-  .card__tip__buttons-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.card__selectors-wrapper {
+  .card__tip {
+    margin-top: 10%;
 
-    button {
-      margin-top: 4%;
-      width: 48%;
+    .card__tip__buttons-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      button,
+      .tips__input-wrapper {
+        margin-top: 4%;
+        width: 48%;
+      }
+    }
+  }
+
+  .card__people-number {
+    margin-top: 10%;
+  }
+
+  @media (min-width: $desktop) {
+    width: 46%;
+
+    .card__tip {
+      .card__tip__buttons-wrapper {
+        button,
+        .tips__input-wrapper {
+          width: 31%;
+        }
+      }
     }
   }
 }
 
-.card__people-number {
-  margin-top: 10%;
+// Card: Total inner card
+
+.card__total-card {
+  background-color: var(--neutral-100);
+  border-radius: 12px;
+  padding: 10% 6% 8%;
+  margin: 9% -2% 0;
+
+  .total-card__result-wrapper {
+    .result-wrapper__text {
+      p {
+        color: var(--neutral-300);
+        font-size: 0.875rem;
+        margin-top: 3%;
+      }
+    }
+
+    p {
+      color: var(--color-primary);
+    }
+  }
+
+  .total-card__result-wrapper:nth-of-type(2) {
+    margin-top: 8%;
+  }
+
+  button {
+    background-color: var(--color-primary);
+    color: var(--neutral-100);
+    margin-top: 8%;
+    width: 100%;
+  }
+
+  @media (min-width: $desktop) {
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6% 5% 6%;
+    margin: 0;
+    width: 48%;
+
+    .total-card__result-wrapper {
+      p {
+        font-size: 2.75rem;
+      }
+    }
+  }
 }

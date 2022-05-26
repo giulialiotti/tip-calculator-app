@@ -7,7 +7,7 @@ import { CardTitle, InputWrapper } from ".";
 import dollarIcon from "../assets/icon-dollar.svg";
 
 export const Bill = () => {
-  const [amount, setAmount] = React.useState(0);
+  const [amount, setAmount] = React.useState('');
 
   const handleChange = (e) => {
     setAmount((v) => (e.target.validity.valid ? e.target.value : v));
@@ -22,6 +22,7 @@ export const Bill = () => {
         alt="Dollar icon"
         amount={amount}
         handleChange={handleChange}
+        placeholder={0}
       />
     </div>
   );
