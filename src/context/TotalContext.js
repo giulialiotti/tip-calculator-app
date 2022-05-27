@@ -13,12 +13,13 @@ export const TotalProvider = ({ children }) => {
   const [customTip, setCustomTip] = React.useState("");
 
   const cero = "0.00";
+  const isDataCero = amounts.bill === "" || amounts.people === "";
 
   // Calculate amount to pay from total check per person
   const getTotalAmount = () => {
     const total = (amounts.bill / amounts.people).toFixed(2);
 
-    if (amounts.bill === "" || amounts.people === "") {
+    if (isDataCero) {
       return cero;
     } else {
       return total;
@@ -27,11 +28,9 @@ export const TotalProvider = ({ children }) => {
 
   // Calculate amount to tip per person
   const getTipAmount = () => {
-    const totalAmount = getTotalAmount();
+    if (isDataCero) return cero;
 
-    if (totalAmount === cero) return cero;
-
-    const totalTip = (amounts.tip * totalAmount) / 100;
+    const totalTip = (amounts.tip * amounts.bill) / 100;
     const tipPerPerson = (totalTip / amounts.people).toFixed(2);
 
     return tipPerPerson;
