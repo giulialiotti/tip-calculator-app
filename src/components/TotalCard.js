@@ -7,20 +7,21 @@ import { TotalContext } from "../context/TotalContext";
 import { CardTitle, ButtonPrimary } from ".";
 
 export const TotalCard = () => {
-  const { getTotalAmount, getTipAmount, resetAmounts } =
+  const { amounts, getTotalAmount, getTipAmount, resetAmounts } =
     React.useContext(TotalContext);
 
-  const totalAmount = getTotalAmount();
+  const isDisabled =
+    amounts.bill === "" && amounts.people === "" && amounts.tip === "";
 
   return (
     <div className="card__total-card">
       <div>
         <ResultWrapper text="Tip Amount" total={getTipAmount()} />
-        <ResultWrapper text="Total" total={totalAmount} />
+        <ResultWrapper text="Total" total={getTotalAmount()} />
       </div>
       <ButtonPrimary
         handleClick={resetAmounts}
-        disabled={totalAmount === "0.00" ? true : false}
+        disabled={isDisabled ? true : false}
       >
         RESET
       </ButtonPrimary>
