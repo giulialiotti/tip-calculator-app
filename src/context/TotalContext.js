@@ -13,7 +13,11 @@ export const TotalProvider = ({ children }) => {
   const [customTip, setCustomTip] = React.useState("");
 
   const cero = "0.00";
-  const isDataCero = amounts.bill === "" || amounts.people === "";
+  const isDataCero =
+    amounts.bill === "" ||
+    amounts.people === "" ||
+    amounts.bill === "0" ||
+    amounts.people === "0";
 
   // Calculate amount to pay from total check per person
   const getTotalAmount = () => {
