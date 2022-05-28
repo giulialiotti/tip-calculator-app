@@ -10,13 +10,20 @@ export const TotalCard = () => {
   const { getTotalAmount, getTipAmount, resetAmounts } =
     React.useContext(TotalContext);
 
+  const totalAmount = getTotalAmount();
+
   return (
     <div className="card__total-card">
       <div>
         <ResultWrapper text="Tip Amount" total={getTipAmount()} />
-        <ResultWrapper text="Total" total={getTotalAmount()} />
+        <ResultWrapper text="Total" total={totalAmount} />
       </div>
-      <ButtonPrimary handleClick={resetAmounts}>RESET</ButtonPrimary>
+      <ButtonPrimary
+        handleClick={resetAmounts}
+        disabled={totalAmount === "0.00" ? true : false}
+      >
+        RESET
+      </ButtonPrimary>
     </div>
   );
 };
