@@ -126,6 +126,14 @@ p {
     transition: all 0.2s ease-out;
     width: 100%;
   }
+
+  .data-error {
+    border: 2px solid #e49631;
+  }
+}
+
+.data-error-title {
+  color: #e49631;
 }
 
 .button-primary {

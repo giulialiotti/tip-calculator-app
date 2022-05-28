@@ -2,6 +2,7 @@ import React from "react";
 
 export const InputWrapper = ({
   className,
+  inputClassName,
   icon,
   alt,
   amount,
@@ -15,6 +16,7 @@ export const InputWrapper = ({
       </div>
     )}
     <input
+      className={inputClassName}
       type="text"
       pattern="[0-9-.]*"
       value={amount}
