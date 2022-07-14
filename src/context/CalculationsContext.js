@@ -1,8 +1,11 @@
 import React from "react";
 
-export const TotalContext = React.createContext();
+export const CalculationsContext = React.createContext();
 
-export const TotalProvider = ({ children }) => {
+export const useCalculationsContext = () =>
+  React.useContext(CalculationsContext);
+
+export const CalculationsProvider = ({ children }) => {
   // State to store input value of bill, selected tip and number of people
   const [amounts, setAmounts] = React.useState({
     bill: "",
@@ -12,32 +15,31 @@ export const TotalProvider = ({ children }) => {
   // State to store input value for custom tip
   const [customTip, setCustomTip] = React.useState("");
 
-  const cero = "0.00";
-  const isDataCero =
+  const shouldNotDisplayResult =
     amounts.bill === "" ||
     amounts.people === "" ||
     amounts.bill === "0" ||
     amounts.people === "0";
 
+  function formatPrice(price) {
+    return parseFloat(price || 0).toFixed(2);
+  }
+
   // Calculate amount to pay from total check per person
   const getTotalAmount = () => {
-    const total = (amounts.bill / amounts.people).toFixed(2);
+    if (shouldNotDisplayResult) return formatPrice(0);
 
-    if (isDataCero) {
-      return cero;
-    } else {
-      return total;
-    }
+    return formatPrice(amounts.bill / amounts.people);
   };
 
   // Calculate amount to tip per person
   const getTipAmount = () => {
-    if (isDataCero) return cero;
+    if (shouldNotDisplayResult) return formatPrice(0);
 
     const totalTip = (amounts.tip * amounts.bill) / 100;
-    const tipPerPerson = (totalTip / amounts.people).toFixed(2);
+    const tipPerPerson = totalTip / amounts.people;
 
-    return tipPerPerson;
+    return formatPrice(tipPerPerson);
   };
 
   // Reset bill, number of people and tip (selected from button or custom)
@@ -51,7 +53,7 @@ export const TotalProvider = ({ children }) => {
   };
 
   return (
-    <TotalContext.Provider
+    <CalculationsContext.Provider
       value={{
         amounts,
         setAmounts,
@@ -63,6 +65,6 @@ export const TotalProvider = ({ children }) => {
       }}
     >
       {children}
-    </TotalContext.Provider>
+    </CalculationsContext.Provider>
   );
 };

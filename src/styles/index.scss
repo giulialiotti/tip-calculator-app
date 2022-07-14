@@ -172,6 +172,10 @@ p {
       .tips__input-wrapper {
         margin-top: 4%;
         width: 48%;
+
+        input {
+          height: 100%;
+        }
       }
     }
   }

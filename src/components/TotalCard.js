@@ -1,14 +1,14 @@
 import React from "react";
 
 // Context
-import { TotalContext } from "../context/TotalContext";
+import { useCalculationsContext } from "../context/CalculationsContext";
 
 // Local Components
 import { CardTitle, ButtonPrimary } from ".";
 
 export const TotalCard = () => {
   const { amounts, getTotalAmount, getTipAmount, resetAmounts } =
-    React.useContext(TotalContext);
+    useCalculationsContext();
 
   const isDisabled =
     amounts.bill === "" && amounts.people === "" && amounts.tip === "";

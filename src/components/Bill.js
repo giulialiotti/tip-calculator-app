@@ -1,7 +1,7 @@
 import React from "react";
 
 // Context
-import { TotalContext } from "../context/TotalContext";
+import { useCalculationsContext } from "../context/CalculationsContext";
 
 // Local Components
 import { CardTitle, InputWrapper } from ".";
@@ -10,7 +10,7 @@ import { CardTitle, InputWrapper } from ".";
 import dollarIcon from "../assets/icon-dollar.svg";
 
 export const Bill = () => {
-  const { amounts, setAmounts } = React.useContext(TotalContext);
+  const { amounts, setAmounts } = useCalculationsContext();
 
   const errorValue = amounts.bill === "0";
 

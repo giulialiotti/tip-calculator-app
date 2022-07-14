@@ -1,17 +1,17 @@
 // Context
-import { TotalProvider } from "./context/TotalContext";
+import { CalculationsProvider } from "./context/CalculationsContext";
 
 // Local Components
 import { Headline, Card } from "./components";
 
 function App() {
   return (
-    <TotalProvider>
+    <CalculationsProvider>
       <main>
         <Headline />
         <Card />
       </main>
-    </TotalProvider>
+    </CalculationsProvider>
   );
 }
 

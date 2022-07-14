@@ -1,7 +1,7 @@
 import React from "react";
 
 // Context
-import { TotalContext } from "../context/TotalContext";
+import { useCalculationsContext } from "../context/CalculationsContext";
 
 // Local Components
 import { CardTitle, ButtonPrimary, InputWrapper } from ".";
@@ -19,7 +19,7 @@ export const Tips = () => {
 
 const ButtonsWrapper = ({ tips }) => {
   const { amounts, setAmounts, customTip, setCustomTip } =
-    React.useContext(TotalContext);
+  useCalculationsContext();
 
   // Set selected tip value
   const setTipAmount = (value) =>
